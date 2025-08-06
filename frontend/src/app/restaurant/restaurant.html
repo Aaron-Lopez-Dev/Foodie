@@ -1,8 +1,6 @@
-<div class="h-[90vh] overflow-y-scroll">
+<div class="h-fit overflow-y-scroll overflow-x-hidden">
 
-<div
-  class="flex items-center flex-col justify-center max-w-[1000px] m-auto h-screen"
->
+<div class="flex items-center flex-col justify-center max-w-[1000px] m-auto h-fit">
   <div role="status" *ngIf="loading()" class="text-center">
     <svg
       aria-hidden="true"
@@ -23,11 +21,9 @@
     <span class="sr-only">Loading...</span>
   </div>
 
-  <p *ngIf="error()">{{ error() }}</p>
+  @for (r of Data(); track r.id) {
 
-  @for (r of restaurants(); track r.id) {
-
-<div class="h-[100px] w-[80vw] hover:bg-gray-200 p-2 rounded-lg transition-discrete duration-600">
+<div class="h-[100px] w-[80vw] max-w-screen-xl hover:bg-gray-200 p-2 rounded-lg transition-discrete duration-600">
     <div>
         <div> 
             <div class=" w-full">
