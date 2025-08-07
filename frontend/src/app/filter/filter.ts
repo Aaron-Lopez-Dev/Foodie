@@ -1,6 +1,8 @@
-import { Component, signal, effect } from '@angular/core';
+import { Component, signal, effect} from '@angular/core';
 import { unfilteredData, filterCuisineType, filterVenueType } from '../utils/fetchData';
 
+export const selectedType = signal<string | null>(null);
+export const selectedCuisine = signal<string| null>(null);
 
 @Component({
   selector: 'app-filter',
@@ -12,14 +14,13 @@ export class Filter {
   data = unfilteredData
   type = filterVenueType;
   cuisine = filterCuisineType
-  selectedVenue = signal<string | null>(null);
-  selectedCuisine = signal<string[]| null>(null)
-
-  filtereffect = effect(() => {
-
-    console.log('Selected venue changed:', this.selectedVenue());
-    console.log('Selected Cuisine Type: ', this.selectedCuisine())
-  });
-
-
+  selectedType = signal<string | null>(null);
+  selectedCuisine = signal<string| null>(null);
+ 
+  constructor(){
+    effect(()=>{
+    console.log(this.selectedType())
+    console.log(this.selectedCuisine())
+  })
+}
 }

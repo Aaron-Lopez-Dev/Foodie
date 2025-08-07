@@ -22,7 +22,7 @@ Filters
 @for (t of type();track t){
   <div>
     <div class="flex items-center mb-4">
-      <input id="typeRadioFilter" type="radio" name="default-radio" value="{{ t }}"class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"/>
+      <input id="type" type="radio" name="default-radio" [value]="t" (change)="selectedType.set(t)" [checked]="selectedType() === t" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"/>
       <label for="radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
         {{ t }}
       </label>
@@ -31,14 +31,22 @@ Filters
 }
 
 <h3 class="text-white">Cuisine</h3><br>
-   @for (c of cuisine(); track c){
-      <div> <!--Cusine Button Area-->
-         <div class="flex items-center mb-4">
-            <input id="cuisineCheckboxFilter" type="checkbox" value="{{ c }}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ c }}</label>
-         </div>
-      </div>  
+@for (c of cuisine(); track c) {
+  <div> <!-- Cuisine Button Area -->
+    <div class="flex items-center mb-4">
+      <input
+         id="cuisine"
+        type="checkbox"
+        [value]="c"
+        (change)="selectedCuisine.set(c)"
+        [checked]="selectedCuisine() === c"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      >
+      <label class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ c }}</label>
+    </div>
+  </div>
 }
+
 <h3 class="text-white">Distance</h3>
 
 </div>

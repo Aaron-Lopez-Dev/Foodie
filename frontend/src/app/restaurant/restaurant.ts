@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { fetchData, loading, unfilteredData} from '../utils/fetchData';
 import { CommonModule } from '@angular/common';
+import { newFilter } from '../utils/filterData';
+import { selectedCuisine } from '../filter/filter';
 
 @Component({
   selector: 'app-restaurant',
@@ -18,6 +20,5 @@ export class RestaurantComponent {
 
   constructor() {
       fetchData();
-  }
 }
-
+}

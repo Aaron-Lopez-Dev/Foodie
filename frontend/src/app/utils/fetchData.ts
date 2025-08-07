@@ -30,7 +30,7 @@ async function fetchData() {
     supabaseError.set(error.message);
   } else {
     unfilteredData.set(data ?? []);
-
+    console.log(unfilteredData())
     let uniqueTypes = [...new Set(data.map(data => data.class))]
     let uniqueCuisine = [...new Set(data.map(data => data.cuisine))]
 
